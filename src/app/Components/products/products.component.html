@@ -1,0 +1,55 @@
+<section class="product-grids section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <div class="product-sidebar">
+                    <div class="single-widget">
+                        <h3>All Categories 
+                            <i (click)="filterProducts()" class="bi bi-funnel filtter" style="cursor: pointer;float: right;"></i>
+                            <i (click)="reset()" class="bi bi-arrow-clockwise mx-1" style="cursor: pointer;float: right;"></i>
+                        </h3>
+                        <ul class="list">
+                            <li *ngFor="let category of categories" class="d-block">
+                                <input class="form-check-input mx-1" type="checkbox" [value]="category.title" [(ngModel)]="category.selected">
+                                {{category.title}}
+                                <span>({{category.productsCount}})</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="single-widget range">
+                        inp type range
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-9 col-12">
+                <div class="product-grids-head">
+                    <div class="product-grid-topbar">
+                        <div class="row align-items-center">
+                            <!-- select to sort  -->
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
+                            <div class="row">
+                                <ng-container *ngFor="let product of products">
+                                    <app-product-item [product]="product" class="col-lg-4 col-md-6 col-12"></app-product-item>
+                                </ng-container>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="pagination left">
+                                        <ul class="pagination-list">
+                                            <li *ngFor="let item of totalPagesArray ">
+                                                <a  (click)="goToPage(item)">{{item}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

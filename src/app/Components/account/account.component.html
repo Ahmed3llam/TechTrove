@@ -1,0 +1,67 @@
+<section class="item-details section">
+    <div class="container">
+        <div class="top-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-images">
+                        <main id="gallery">
+                            <div class="main-img">
+                                <img src="{{data?.profileImage}}" style="height: 400px;" id="current" alt="#">
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-info">
+                        <div class="profile-details">
+                            <div class="profile-row">
+                                <span class="bi bi-person m-2"></span>
+                                <span class="profile-label">First Name:</span>
+                                <span class="profile-value">{{data?.firstName}}</span>
+                            </div>
+                            <div class="profile-row">
+                                <span class="bi bi-person m-2"></span>
+                                <span class="profile-label">Last Name:</span>
+                                <span class="profile-value">{{data?.lastname}}</span>
+                            </div>
+                            <div class="profile-row">
+                                <span class="bi bi-house m-2"></span>
+                                <span class="profile-label">Address:</span>
+                                <span class="profile-value">{{data?.address}}</span>
+                            </div>
+                            <div class="profile-row">
+                                <span class="bi bi-phone m-2"></span>
+                                <span class="profile-label">Phone:</span>
+                                <span class="profile-value">{{data?.phoneNumber}}</span>
+                            </div>
+                            <div class="profile-row">
+                                <span class="bi bi-envelope m-2"></span>
+                                <span class="profile-label">Email:</span>
+                                <span class="profile-value">{{data?.email}}</span>
+                            </div>
+                        </div>
+                        <div class="bottom-content">
+                            <div class="row align-items-end">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="button cart-button">
+                                        <button [routerLink]="['/profile','data', data?.id]" class="btn" style="width: 100%;">Edit Profile</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="wish-button">
+                                        <button [routerLink]="['/profile','Password', data?.id]" class="btn"><i class="bi bi-key"></i>Edit Password</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="wish-button">
+                                        <button [routerLink]="['/profile','ProfileImage', data?.id]" class="btn"><i class="bi bi-image"></i>Edit Image</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>

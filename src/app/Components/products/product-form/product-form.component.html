@@ -1,0 +1,100 @@
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                <form class="card login-form" method="post" [formGroup]="ProductData" (submit)="submit()">
+                    <div class="card-body">
+                        <div class="title">
+                            <h3>{{ ProductId == 0 ? "Add Product" : "Edit Product" }}</h3>
+                        </div>
+                        <div *ngIf="!EditImage" class="form-group input-group">
+                            <label for="reg-fn">Title</label>
+                            <input class="form-control"name="title" formControlName="title" type="string" id="reg-email" fdprocessedid="qzw08f">
+                            <ng-container *ngIf="getTitle.touched">
+                                <div *ngIf="getTitle.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Title is required
+                                </div>
+                                <div *ngIf="getTitle.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Product Title must be at least 3 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="!EditImage" class="form-group input-group">
+                            <label for="reg-fn">Description</label>
+                            <textarea class="form-control"  formControlName="description"  name="description"  id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <ng-container *ngIf="getDescription.touched">
+                                <div *ngIf="getDescription.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Description is required
+                                </div>
+                                <div *ngIf="getDescription.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Product Description must be at least 10 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="!EditImage" class="form-group input-group">
+                            <label for="reg-fn">Price</label>
+                            <input class="form-control"name="price" formControlName="price" type="number" id="reg-email" fdprocessedid="qzw08f">
+                            <ng-container *ngIf="getPrice.touched">
+                                <div *ngIf="getPrice.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Price is required
+                                </div>
+                                <div *ngIf="getPrice.hasError('min')" id="emailHelp" class="form-text text-danger">
+                                    Product Price must be at least 1
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="!EditImage" class="form-group input-group">
+                            <label for="reg-fn">Quantity</label>
+                            <input class="form-control"name="stock" formControlName="stock" type="number" id="reg-email" fdprocessedid="qzw08f">
+                            <ng-container *ngIf="getStock.touched">
+                                <div *ngIf="getStock.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Quantity is required
+                                </div>
+                                <div *ngIf="getStock.hasError('min')" id="emailHelp" class="form-text text-danger">
+                                    Product Quantity must be at least 1
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="ProductId != 0&&EditImage ||ProductId == 0" class="form-group input-group">
+                            <label for="reg-fn">Image</label>
+                            <input class="form-control" name="image" formControlName="image" type="file" id="reg-email" fdprocessedid="qzw08f" (change)="onImageSelected($event)">
+                            <ng-container *ngIf="getImage.touched">
+                                <div *ngIf="getImage.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Image is required
+                                </div>
+                            </ng-container>
+                        </div>                        
+                          
+                        <div *ngIf="!EditImage" class="form-group input-group">
+                            <label for="reg-fn">Category</label>
+                            <select class="form-control" name="categoryId" formControlName="categoryId" id="reg-email" fdprocessedid="qzw08f">
+                                <option *ngFor="let item of categories" [value]="item.id" [selected]="item.title === Product.category">
+                                    {{item.title}}
+                                </option>
+                            </select>
+                                                        
+                            <ng-container *ngIf="getCategoryId.touched">
+                                <div *ngIf="getCategoryId.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Category is required
+                                </div>
+                                <div *ngIf="getCategoryId.hasError('min')" id="emailHelp" class="form-text text-danger">
+                                    Product Category must be at least 1
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <ng-container *ngIf="notValid">
+                                <div id="emailHelp" class="form-text text-danger">
+                                    Invalid Data
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="button">
+                            <button class="btn" type="submit" fdprocessedid="fx4yd"> {{ ProductId == 0 ? "Add Product" : "Edit Product" }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

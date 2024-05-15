@@ -1,0 +1,56 @@
+<div class="row justify-content-center m-3">
+  <div class="col-12 col-md-9">
+      <span [routerLink]="['/products', 0]" class="my-2 add" style="cursor: pointer; font-size: 24px">
+        <i  class="bi bi-plus text-info"></i>
+        Product
+      </span>
+      <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" style="display: none;">#</th>
+                  <th scope="col" style="width: 80px;">Image</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Review Count</th>
+                  <th scope="col">Order Count</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr *ngFor="let product of products">
+                  <th style="display: none;" scope="row">1</th>
+                  <td>
+                      <img src="{{product.img}}" alt=""/>
+                  </td>
+                  <td>{{product.title}}</td>
+                  <td>{{product.price}} $</td>
+                  <td>{{product.stock}}</td>
+                  <td>{{product.reviewCount}}</td>
+                  <td>{{product.orderCount}}</td>
+                  <td>{{product.category}}</td>
+                  <td>
+                    <i [routerLink]="['/products', product.id,'info']" class="bi bi-eye text-primary mx-2 action-icon"></i>
+                    <i [routerLink]="['/products', product.id]" class="bi bi-pencil text-secondary mx-2 action-icon"></i>
+                    <i [routerLink]="['/products','image', product.id]" class="bi bi-file-earmark-image text-success mx-2 action-icon"></i>
+                    <i (click)="deleteProduct(product.id)" class="bi bi-trash text-danger mx-2 action-icon"></i>
+                  </td>                
+                </tr>
+              </tbody>
+            </table>
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <div class="pagination left">
+                  <ul class="pagination-list">
+                      <li *ngFor="let item of totalPagesArray ">
+                          <a  (click)="goToPage(item)">{{item}}</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

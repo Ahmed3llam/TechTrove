@@ -1,0 +1,180 @@
+<header class="header navbar-area">
+  <div class="topbar">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-4 col-md-4 col-12">
+                  <div class="top-left">
+                      <ul class="menu-top-link">
+                          <li>
+                              <div class="select-position">
+                                  <select id="select4">
+                                      <option value="0" selected>$ USD</option>
+                                      <option value="1">€ LE</option>
+                                  </select>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="select-position">
+                                  <select id="select5">
+                                      <option value="0" selected>English</option>
+                                      <option value="1">العربية</option>
+                                  </select>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-12">
+                  <div class="top-middle">
+                      <ul class="useful-links">
+                          <li><a href="#">Home</a></li>
+                          <li><a href="#">About Us</a></li>
+                          <li><a href="#">Contact Us</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-12">
+                  <div class="top-end">
+                    <li *ngIf="userDataInfo.fname" class="nav-item dropdown text-light ddlist">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            <i class="bi bi-person-fill"></i>
+                          Hello {{userDataInfo.fname}}
+                        </a>
+                        <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 44px, 0px);cursor: pointer;" data-popper-placement="bottom-start">
+                          <li><a class="dropdown-item" [routerLink]="['/profile']">Profile</a></li>
+                          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                          <li><a class="dropdown-item" (click)="deleteAccount(userDataInfo.id)">Delete Account</a></li>
+                        </ul>
+                      </li>
+                      <ul *ngIf="!userDataInfo.fname" class="user-login">
+                          <li>
+                              <a [routerLink]="['/login']">Sign In</a>
+                          </li>
+                          <li>
+                              <a [routerLink]="['/register']">Register</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="header-middle">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-3 col-md-3 col-7">
+                  <a class="navbar-brand" href="index.html">
+                    <h3>TechTrove</h3>
+                      <!-- <img src="assets/images/logo/logo.svg" alt="Logo"> -->
+                  </a>
+              </div>
+              <div class="col-lg-5 col-md-7 d-xs-none">
+                  <div class="main-menu-search">
+                      <div class="navbar-search search-style-5">
+                          <div class="search-select">
+                              <div class="select-position">
+                                  <select id="select1">
+                                      <option selected>Category</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="search-input">
+                              <input type="text" placeholder="Search">
+                          </div>
+                          <div class="search-btn">
+                              <button><i class="bi bi-search"></i></button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-2 col-5">
+                  <div class="middle-right-area">
+                      <div class="nav-hotline">
+                        <i class="bi bi-telephone"></i>
+                          <h3>Hotline:
+                              <span>(+20) 1014782114</span>
+                          </h3>
+                      </div>
+                      <div *ngIf="role != 'Admin' && userDataInfo.fname" class="navbar-cart">
+                          <div class="wishlist">
+                              <a [routerLink]="['/wish']">
+                                  <i class="bi bi-heart"></i>
+                                  <span class="total-items">{{wishCount}}</span>
+                              </a>
+                          </div>
+                          <div class="cart-items">
+                              <a [routerLink]="['/cart']" class="main-btn">
+                                   <i class="bi bi-cart"></i>
+                                  <span class="total-items">{{cartCount}}</span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container" id="navContainer">
+      <div class="row align-items-center">
+          <div class="col-lg-8 col-md-6 col-12">
+              <div class="nav-inner">
+                  <nav class="navbar navbar-expand-lg">
+                      <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                          aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="toggler-icon"></span>
+                          <span class="toggler-icon"></span>
+                          <span class="toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                          <ul id="nav" class="navbar-nav ms-auto">
+                            @if(role == 'User'){
+                                <li class="nav-item">
+                                    <a [routerLink]="['/']" class="active" aria-label="Toggle navigation">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a [routerLink]="['/products']" aria-label="Toggle navigation">Shop</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a  href="index.html" aria-label="Toggle navigation">Order</a>
+                                </li> -->
+                            }
+                            @if(role == 'Admin'){
+                              <li class="nav-item">
+                                  <a [routerLink]="['/']" class="active" aria-label="Toggle navigation">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a [routerLink]="['/productDash']" aria-label="Toggle navigation">Products</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a  [routerLink]="['/categories']" aria-label="Toggle navigation">Categories</a>
+                              </li>
+                              <!-- <li class="nav-item">
+                                <a  [routerLink]="['/cart']" aria-label="Toggle navigation">Roles</a>
+                            </li> -->
+                            }
+                          </ul>
+                      </div>
+                  </nav>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+              <div class="nav-social">
+                  <h5 class="title">Follow Us:</h5>
+                  <ul>
+                      <li>
+                          <a href="#"><i class="bi bi-facebook"></i></a>
+                      </li>
+                      <li>
+                          <a href="#"><i class="bi bi-x"></i></a>
+                      </li>
+                      <li>
+                          <a href="#"><i class="bi bi-instagram"></i></a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- End Nav Social -->
+          </div>
+      </div>
+  </div>
+</header>

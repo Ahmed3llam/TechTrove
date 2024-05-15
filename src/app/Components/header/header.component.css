@@ -1,0 +1,39 @@
+.header-top a{
+    color: gray;
+}
+.header-top i{
+    margin-right: 5px;
+}
+.header-top a:hover{
+    /* color: #c96; */
+    color: #6ea0ec;
+}
+
+a:hover,span{
+    /* color: #c96; */
+    color: #6ea0ec;
+}
+.cart-dropdown a,.cart-dropdown i{
+    color: black;
+}
+.cart-count{
+    position: fixed;
+    background-color: #c96;
+    color: white;
+    border-radius: 50%;
+    padding: 0px 5px;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+.ddlist{
+    list-style: none;
+}
+.ddlist:hover{
+    color: #0d6efd;
+}

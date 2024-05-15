@@ -1,0 +1,152 @@
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                <form class="card login-form" method="post" [formGroup]="Data" (submit)="submit()">
+                    <div class="card-body">
+                        <div class="title">
+                            <h3>{{editType}}</h3>
+                        </div>
+                        <div *ngIf="editType == 'Edit Data'">
+                            <div class="form-group input-group">
+                                <label for="reg-fn">First Name</label>
+                                <input class="form-control"name="firstName" formControlName="firstName" type="string" id="reg-email" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getfirstName.touched">
+                                    <div *ngIf="getfirstName.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        First Name is required
+                                    </div>
+                                    <div *ngIf="getfirstName.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        First Name must be at least 3 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Last Name</label>
+                                <input class="form-control"  formControlName="lastname"  name="lastname"  type="string" id="reg-email"/>
+                                <ng-container *ngIf="getlastname.touched">
+                                    <div *ngIf="getlastname.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Last Name is required
+                                    </div>
+                                    <div *ngIf="getlastname.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        Last Name must be at least 10 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Email</label>
+                                <input class="form-control"name="email" formControlName="email" type="email" id="reg-email" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getemail.touched">
+                                    <div *ngIf="getemail.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Email is required
+                                    </div>
+                                    <div *ngIf="getemail.hasError('email')" id="emailHelp" class="form-text text-danger">
+                                        Email must be valid
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Phone Number</label>
+                                <input class="form-control"name="phoneNumber" formControlName="phoneNumber" type="string" id="reg-email" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getphoneNumber.touched">
+                                    <div *ngIf="getphoneNumber.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Phone Number is required
+                                    </div>
+                                    <div *ngIf="getphoneNumber.hasError('pattern')" id="emailHelp" class="form-text text-danger">
+                                        Phone Number must be at least 11 characters start with 01
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Gender</label>
+                                <select class="form-control"name="gender" formControlName="gender" type="number" id="reg-email" fdprocessedid="qzw08f">
+                                    <option value="Male" [selected]="User.gender == 'Male'">Male</option>
+                                    <option value="Female" [selected]="User.gender == 'Female'">Female</option>
+                                </select>
+                                <ng-container *ngIf="getgender.touched">
+                                    <div *ngIf="getgender.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Gender is required
+                                    </div>
+                                    <div *ngIf="getgender.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        Gender must be at least 4 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Address</label>
+                                <input class="form-control"  formControlName="address"  name="address"   type="string" id="reg-email" fdprocessedid="qzw08f"/>
+                                <ng-container *ngIf="getaddress.touched">
+                                    <div *ngIf="getaddress.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Address is required
+                                    </div>
+                                    <div *ngIf="getaddress.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        Address must be at least 6 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div *ngIf="editType == 'Edit Profile Image'" class="form-group input-group">
+                            <label for="reg-fn">Profile Image</label>
+                            <input class="form-control" name="image" formControlName="image" type="file" id="reg-email" fdprocessedid="qzw08f" (change)="onImageSelected($event)">
+                            <ng-container *ngIf="getImage.touched">
+                                <div *ngIf="getImage.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Profile Image is required
+                                </div>
+                            </ng-container>
+                        </div>                        
+                        <div *ngIf="editType == 'Edit Password'">
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Old Password</label>
+                                <input class="form-control" name="oldPassword" formControlName="oldPassword" type="password" id="reg-email1" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getoldPassword.touched">
+                                    <div *ngIf="getoldPassword.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Old Password is required
+                                    </div>
+                                    <div *ngIf="getoldPassword.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        Old Password must be at least 8 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">New Password</label>
+                                <input class="form-control" name="newPassword" formControlName="newPassword" type="password" id="reg-email2" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getnewPassword.touched">
+                                    <div *ngIf="getnewPassword.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        New Password is required
+                                    </div>
+                                    <div *ngIf="getnewPassword.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        New Password must be at least 8 characters
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Confirm New Password</label>
+                                <input class="form-control" name="confirmPassword" formControlName="confirmPassword" type="password" id="reg-email" fdprocessedid="qzw08f">
+                                <ng-container *ngIf="getconfirmPassword.touched">
+                                    <div *ngIf="getconfirmPassword.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                        Confirm New Password is required
+                                    </div>
+                                    <div *ngIf="getconfirmPassword.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                        Confirm New Password must be at least 8 characters
+                                    </div>
+                                    <div *ngIf="getconfirmPassword.hasError('passwordMismatch')" id="emailHelp" class="form-text text-danger">
+                                        New Password and Confirm New Password must match
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div> 
+                        <div class="form-group input-group">
+                            <ng-container *ngIf="notValid">
+                                <div id="emailHelp" class="form-text text-danger">
+                                    Invalid Data
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="button">
+                            <button class="btn" type="submit" fdprocessedid="fx4yd"> {{editType}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

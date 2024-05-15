@@ -1,0 +1,98 @@
+.product-details-info .single-block {
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+.product-details-info .give-review h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.product-details-info .give-review .review-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    width: 100%;
+    background-color: white;
+    color: #cc9966;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 4px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.product-details-info .single-block {
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+.product-details-info .reviews .title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.product-details-info .reviews .single-review {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 30px;
+}
+.product-details-info .reviews .single-review img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.product-details-info .reviews .single-review .review-info {
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 25px;
+}
+.product-details-info .reviews .single-review .review-info::before {
+    position: absolute;
+    top: 12px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    content: '';
+    pointer-events: none;
+    margin-top: 9px;
+    border-width: 10px;
+    border-color: transparent;
+    border-right-color: #e5e5e5;
+}
+.product-details-info .reviews .single-review .review-info h4 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.product-details-info .reviews .single-review .review-info h4 span {
+    font-size: 14px;
+    display: block;
+    color: #888;
+    margin-top: 7px;
+}
+
+.profile-details {
+    font-family: Arial, sans-serif; /* Use a fallback font */
+}
+
+.profile-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.profile-value {
+    color: #555; /* Color for profile values */
+}

@@ -1,0 +1,20 @@
+<div  class="single-product">
+    <div class="product-image">
+        <img src="{{product.img}}" alt="#" data--h-bstatus="5PROCESSED">
+        <div *ngIf="role != 'Admin'" class="button cart-wish" >
+            <a (click)="addToCart(product.id)" class="btn" style="width: 100px;"><i class="bi bi-cart"></i></a>
+            <a (click)="addToWish(product.id)" class="btn" style="width: 100px;"><i class="bi bi-heart"></i></a>
+        </div>
+    </div>
+    <div [routerLink]="['/products', product.id,'info']" class="product-info" style="cursor: pointer;">
+        <span class="category">{{product.category}}</span>
+        <h4 class="title">
+            <a [routerLink]="['/products', product.id,'info']">{{product.title}}</a>
+        </h4>
+        <ul class="review">
+        </ul>
+        <div class="price">
+            <span>$ {{product.price}}</span>
+        </div>
+    </div>
+</div>

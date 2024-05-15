@@ -1,0 +1,109 @@
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="cart-list-head">
+            <div class="cart-list-title">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-12">
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Product Name</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>#In Stock</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Price/Item</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Quantity</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-12">
+                        <p>Remove</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngFor="let item of products" class="cart-single-list">
+                <div class="row align-items-center">
+                    <div class="col-lg-1 col-md-1 col-12">
+                        <a [routerLink]="['/products', item.id,'info']">
+                            <img src="{{item.img}}" alt="#" data--h-bstatus="5PROCESSED"></a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <h5 class="product-name">
+                            <a [routerLink]="['/products', item.id,'info']">
+                                {{item.title}}
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p *ngIf="item.stock > 1">{{item.stock}} items</p>
+                        <p *ngIf="item.stock == 1"> Only One Item</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>$ {{item.price}}</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <div class="input-group  input-spinner">
+                            <div class="input-group-prepend">
+                                <button (click)="decrementQuantity(item.id)" style="min-width: 26px" class="btn btn-decrement btn-spinner" type="button">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                            </div>
+                            <input type="text" style="max-width: 40px;text-align: center;border: none;border-radius: 5px;" class="form-control " value="{{item.quantity}}" readonly>
+                            <div class="input-group-append">
+                                <button (click)="incrementQuantity(item.id)" style="min-width: 26px" class="btn btn-increment btn-spinner" type="button">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>$ {{item.tPrice}}</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-12" style="cursor: pointer;">
+                        <a class="remove-item" (click)="removeItem(item.id)"><i class="bi bi-trash "></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6 col-12">
+                            <div class="left">
+                                <div class="coupon">
+                                    <form action="#" target="_blank">
+                                        <input name="Coupon" placeholder="Enter Your Coupon" fdprocessedid="ixqjzt">
+                                        <div class="button">
+                                            <button class="btn" fdprocessedid="cxj9tn">Apply Coupon</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="right">
+                                <ul>
+                                    <li>Cart Subtotal<span>$ {{total}}</span></li>
+                                    <li>Shipping<span>Free</span></li>
+                                    <!-- <li>You Save<span>$29.00</span></li> -->
+                                    <li class="last">You Pay<span>$ {{total}}</span></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="button">
+                                    <a href="#" class="btn">Checkout</a>
+                                    <a [routerLink]="['/products']" class="btn btn-alt">Continue shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

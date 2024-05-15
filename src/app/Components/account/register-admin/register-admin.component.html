@@ -1,0 +1,160 @@
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                <form class="card login-form" method="post" method="post" [formGroup]="RegisterData" (submit)="submit()">
+                    <div class="card-body">
+                        <div class="title">
+                            <h3>Admin Register</h3>
+                        </div>
+                        <div class="social-login">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-12 my-2">
+                                    <a class="btn facebook-btn" href="javascript:void(0)" style="border-color: #3b5998;">
+                                        <i class="bi bi-facebook mx-1"></i> 
+                                        Facebook login
+                                    </a>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12 my-2">
+                                    <a class="btn twitter-btn" href="javascript:void(0)">
+                                        <i class="bi bi-twitter-x mx-1"></i> 
+                                        X login
+                                    </a>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12 my-2">
+                                    <a class="btn google-btn" href="javascript:void(0)">
+                                        <i class="bi bi-google mx-1"></i> 
+                                        Google login
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alt-option">
+                            <span>Or</span>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">First Name</label>
+                            <input class="form-control" type="text" name="fname" formControlName="fname" id="reg-fn">
+                            <ng-container *ngIf="getFname.touched">
+                                <div *ngIf="getFname.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    First Name is required
+                                </div>
+                                <div *ngIf="getFname.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    First Name must be at least 3 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Last Name</label>
+                            <input class="form-control" type="text" name="lname" formControlName="lname" id="reg-lname">
+                            <ng-container *ngIf="getLname.touched">
+                                <div *ngIf="getLname.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Last Name is required
+                                </div>
+                                <div *ngIf="getLname.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Last Name must be at least 3 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Profile Image</label>
+                            <input class="form-control" name="image" formControlName="image" type="file" id="reg-email" fdprocessedid="qzw08f" (change)="onImageSelected($event)">
+                            <ng-container *ngIf="getImage.touched">
+                                <div *ngIf="getImage.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Profile Image is required
+                                </div>
+                            </ng-container>
+                        </div>        
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Email</label>
+                            <input class="form-control" type="text" name="email" formControlName="email" id="reg-email">
+                            <ng-container *ngIf="getEmail.touched">
+                                <div *ngIf="getEmail.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Email is required
+                                </div>
+                                <div *ngIf="getEmail.hasError('email')" id="emailHelp" class="form-text text-danger">
+                                    Email is invalid
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Password</label>
+                            <input class="form-control" type="password" name="password" formControlName="password" id="reg-pass">
+                            <ng-container *ngIf="getPassword.touched">
+                                <div *ngIf="getPassword.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Password is required
+                                </div>
+                                <div *ngIf="getPassword.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Password must be at least 8 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Confirm Password</label>
+                            <input class="form-control" type="password" name="confirmPassword" formControlName="confirmPassword" id="reg-cpass">
+                            <ng-container *ngIf="getConfirmPassword.touched">
+                                <div *ngIf="getConfirmPassword.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Confirm Password is required
+                                </div>
+                                <div *ngIf="getConfirmPassword.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Confirm Password must be at least 8 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Phone Number</label>
+                            <input class="form-control" type="text" name="phone" formControlName="phone" id="reg-phone">
+                            <ng-container *ngIf="getPhone.touched">
+                                <div *ngIf="getPhone.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Phone Number is required
+                                </div>
+                                <div *ngIf="getPhone.hasError('pattern')" id="emailHelp" class="form-text text-danger">
+                                    Phone Number must be at least 11 characters start with 01
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Address</label>
+                            <input class="form-control" type="text" name="address" formControlName="address" id="reg-address">
+                            <ng-container *ngIf="getAddress.touched">
+                                <div *ngIf="getAddress.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Address is required
+                                </div>
+                                <div *ngIf="getAddress.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Address must be at least 8 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="reg-fn">Gender</label>
+                            <select class="form-control"name="gender" formControlName="gender" type="number" id="reg-email" fdprocessedid="qzw08f">
+                                <option value="Male" selected="true">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <ng-container *ngIf="getgender.touched">
+                                <div *ngIf="getgender.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                    Product Quantity is required
+                                </div>
+                                <div *ngIf="getgender.hasError('minlength')" id="emailHelp" class="form-text text-danger">
+                                    Product Quantity must be at least 4 characters
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group input-group">
+                            <ng-container *ngIf="notValid">
+                                <div id="emailHelp" class="form-text text-danger">
+                                    Invalid Data
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="button">
+                            <button class="btn" type="submit" fdprocessedid="04qb1">Register</button>
+                        </div>
+                        <p class="outer-link">You have an account? <a [routerLink]="['/login']">Login here </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

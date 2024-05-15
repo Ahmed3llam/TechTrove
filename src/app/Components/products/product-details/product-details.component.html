@@ -1,0 +1,65 @@
+<section class="item-details section">
+    <div class="container">
+        <div class="top-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-images">
+                        <main id="gallery">
+                            <div class="main-img">
+                                <img src="{{Product?.img}}" id="current" alt="#">
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-info">
+                        <h2 class="title">{{Product?.title}}</h2>
+                        <p class="category"><i class="lni lni-tag"></i> {{Product?.category}}</p>
+                        <h3 class="price">$ {{Product?.price}}</h3>
+                        <p class="info-text">{{Product?.description}}</p>
+                        @if(role != 'Admin'){
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="form-group quantity">
+                                        <label for="color">Quantity</label>
+                                        <select class="form-control" [(ngModel)]="selectedQuantity" (ngModelChange)="onQuantityChange()">
+                                            <option *ngIf="Product?.stock > 0" [value]="1" [selected]="selectedQuantity === 1">1</option>
+                                            <option *ngIf="Product?.stock > 1" [value]="2" [selected]="selectedQuantity === 2">2</option>
+                                            <option *ngIf="Product?.stock > 2" [value]="3" [selected]="selectedQuantity === 3">3</option>
+                                            <option *ngIf="Product?.stock > 3" [value]="4" [selected]="selectedQuantity === 4">4</option>
+                                            <option *ngIf="Product?.stock > 4" [value]="5" [selected]="selectedQuantity === 5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="button cart-button">
+                                            <button (click)="addToCart()" class="btn" style="width: 100%;">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="wish-button">
+                                            <button (click)="addToWishList()" class="btn"><i class="bi bi-heart"></i> To Wishlist</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }@else {
+                            <div class="bottom-content">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="button cart-button">
+                                            <button [routerLink]="['/productDash']" class="btn" style="width: 100%;">Back</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

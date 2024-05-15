@@ -1,0 +1,8 @@
+.cart-wish{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.cart-wish a{
+    width: 100px;
+}
